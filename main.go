@@ -1,3 +1,7 @@
+// This package accepts a set of strings as user input on the console, then
+// creates a random shuffling of them such that the output is a derangement
+// of the original set. This means no string in the output set is in the same
+// position it was as in the original set.
 package main
 
 import (
@@ -6,16 +10,6 @@ import (
 	"os"
 	"strings"
 )
-
-func isDeranged(slice1, slice2 []string) bool {
-	for i := range slice1 {
-		if slice1[i] == slice2[i] {
-			return false
-		}
-	}
-
-	return true
-}
 
 func getInput() []string {
 	reader := bufio.NewReader(os.Stdin)
