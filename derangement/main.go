@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/aaronshaver/go-scratchpad/derangement/pkg/derangement"
+	"github.com/aaronshaver/go-scratchpad/pkg/derangement"
 )
 
 func getInput() []string {
