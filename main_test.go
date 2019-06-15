@@ -1,4 +1,4 @@
-package derangement
+package main
 
 import (
 	"testing"

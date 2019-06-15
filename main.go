@@ -7,11 +7,35 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
-
-	"github.com/aaronshaver/go-scratchpad/derangement/pkg/derangement"
+	"time"
 )
+
+// Tests for derangement. Only works well with true sets (collection of distinct objects)
+func isDeranged(a, b []string) bool {
+	for i := range a {
+		if a[i] == b[i] {
+			return false
+		}
+	}
+
+	return true
+}
+
+// Obviously this is brute force and not performant for large slices. This is a weekend
+// project and I'm tired, so the CTCI-style perfect answer shall be a later exericse ;-)
+func derange(a []string) []string {
+	tempStrings := append([]string(nil), a...)
+	rand.Seed(time.Now().UnixNano())
+	for {
+		rand.Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
+		if isDeranged(tempStrings, a) {
+			return a
+		}
+	}
+}
 
 func getInput() []string {
 	reader := bufio.NewReader(os.Stdin)
@@ -35,6 +59,6 @@ func getInput() []string {
 
 func main() {
 	var items = getInput()
-	derangement.Derange(items)
+	derange(items)
 	fmt.Println(items)
 }
