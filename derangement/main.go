@@ -46,6 +46,7 @@ func getInput() []string {
 	for {
 		fmt.Print("-> ")
 		text, _ := reader.ReadString('\n')
+		// DISCLAIMER: Windows-only; could do GOOS detection here to make it work on other OSes, but meh
 		text = strings.Replace(text, "\r\n", "", -1) // trim line ending on Windows
 		if len(text) == 0 {                          // exit for loop when user hits ENTER key
 			break
